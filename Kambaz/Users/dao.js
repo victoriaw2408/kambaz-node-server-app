@@ -6,11 +6,6 @@ export const findUserByUsername = (username) => users.find((user) => user.userna
 
 let { users } = db;
 
-// export const createUser = (user) => {
-//  const newUser = { ...user, _id: uuidv4() };
-//  users = [...users, newUser];
-//  return newUser;
-// };
 export const findAllUsers = () => users;
 export const findUserById = (userId) => users.find((user) => user._id === userId);
 // export const findUserByUsername = (username) => users.find((user) => user.username === username);
