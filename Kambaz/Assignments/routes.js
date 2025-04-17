@@ -17,18 +17,18 @@ export default function AssignmentRoutes(app) {
     //     res.send(assignments);
     // });
 
-    app.get("/api/assignments/:assignmentId", (req, res) => {
+    app.get("/api/assignments/:assignmentId", async(req, res) => {
         const { assignmentId } = req.params;
-        const assignments = assignmentsDao.findAssignmentsForCourse(assignmentId);
+        const assignments = await assignmentsDao.findAssignmentsForCourse(assignmentId);
         res.json(assignments);
       });
-      app.post("/api/assignments/:assignmentId", (req, res) => {
+      app.post("/api/assignments/:assignmentId", async (req, res) => {
         const { assignmentId } = req.params;
         const assignment = {
           ...req.body,
           assignment: assignmentId,
         };
-        const newAssignment = assignmentsDao.createAssignment(assignment);
+        const newAssignment = await assignmentsDao.createAssignment(assignment);
         res.send(newAssignment);
       });
       app.put("/api/assignments/:assignmentId", async (req, res) => {
